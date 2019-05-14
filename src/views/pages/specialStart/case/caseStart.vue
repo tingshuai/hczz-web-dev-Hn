@@ -165,7 +165,8 @@
 							jqajzs: this.obj.jyaq,
 							slsj: this.obj.slsj,
 							jqajlx: this.obj.ajlbMc,
-                            ywlx:api.ywlx.za,
+							ywlx:api.ywlx.za,
+							afdz:this.obj.ajdzmc,
 							rwly: '2'
 						}
 						let sqxx = [];
@@ -216,7 +217,7 @@
                             ajjbxx: tajjbxx,
 							sqxx: tsqxx,
 							attach: attach,
-                            zazclx:this.status,
+							zazclx:this.status,
                             zaxx:zaxx//组长信息
 						}
 						api.api('post', api.configUrl + '/hczz/za/startSqxx', objs).then(res => {

@@ -155,6 +155,7 @@
 							jyrwnr: this.warn.jyrwnr,
 							sabjbh: this.obj.jjdbh,
 							jqzjlx: this.obj.ajlbMc,
+							afdz:this.obj.afdd,
 							jqajzs: this.obj.bjnr,
 							slsj: this.obj.bjsj,
 							jqajlx: this.obj.bjlxmc,
