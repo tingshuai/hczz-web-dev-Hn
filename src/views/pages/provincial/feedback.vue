@@ -1,14 +1,14 @@
 <template>
 	<el-card shadow="always" class="directive-ct directive-check-ct" style="background: #f0f0f0;border:none">
 		<Form inline :label-width="75" class="search-ct">
-			<FormItem label="案件名称：">
-				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案件名称" clearable style="width: 180px"></Input>
+			<FormItem label="案事件名称：">
+				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案事件名称" clearable style="width: 180px"></Input>
 			</FormItem>
 			<FormItem label="申请人：">
 				<Input type="text" v-model.trim="basePage.sqrxm" placeholder="请输入申请人" clearable style="width: 180px"></Input>
 			</FormItem>
-			<FormItem label="签收时间：">
-				<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+			<FormItem label="申请时间：">
+				<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 			</FormItem>
 			<Button type="primary" class="searchBtn" @click="search" style="margin-right:8px;">查询</Button>
 		</Form>
@@ -54,9 +54,9 @@
 						<span :title="scope.row.jyrwnr" class="text-overflow">{{scope.row.jyrwnr}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column label="签收时间" align="center" :show-overflow-tooltip="true">
+				<el-table-column label="申请时间" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
-						<span class="span-dqzt" :title="scope.row.qssj">{{scope.row.qssj|timestampToTime}}</span>
+						<span class="span-dqzt">{{scope.row.sqrq|timestampToTime}}</span>
 					</template>
 				</el-table-column>
 				<el-table-column label="状态" align="center" :show-overflow-tooltip="true">

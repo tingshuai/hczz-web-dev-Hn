@@ -13,8 +13,8 @@
             </el-form-item>
         </el-form> -->
         <Form inline :label-width="75" class="search-ct">
-            <FormItem label="案件名称：">
-                <Input type="text" v-model="basePage.ajmc" placeholder="请输入案件名称" clearable style="width: 180px"></Input>
+            <FormItem label="案事件名称：">
+                <Input type="text" v-model="basePage.ajmc" placeholder="请输入案事件名称" clearable style="width: 180px"></Input>
             </FormItem>
             <FormItem label="申请人：">
                 <Input type="text" v-model.trim="basePage.sqrxm" placeholder="请输入申请人" clearable

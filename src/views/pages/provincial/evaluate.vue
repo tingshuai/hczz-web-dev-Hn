@@ -14,14 +14,14 @@
 			</el-form>
 		</div> -->
 		<Form inline :label-width="75" class="search-ct">
-			<FormItem label="案件名称：">
-				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案件名称" clearable style="width: 180px"></Input>
+			<FormItem label="案事件名称：">
+				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案事件名称" clearable style="width: 180px"></Input>
 			</FormItem>
 			<FormItem label="反馈人：">
-				<Input type="text" v-model.trim="basePage.fkrxm" placeholder="请输入申请人" clearable style="width: 180px"></Input>
+				<Input type="text" v-model.trim="basePage.fkrxm" placeholder="请输入反馈人" clearable style="width: 180px"></Input>
 			</FormItem>
-			<FormItem label="反馈时间：">
-				<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择反馈时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+			<FormItem label="申请时间：">
+				<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 			</FormItem>
 			<Button type="primary" class="searchBtn" @click="search" style="margin-right:8px;">查询</Button>
 		</Form>
@@ -62,9 +62,9 @@
 						<span :title="scope.row.jyrwnr" class="sl">{{scope.row.jyrwnr}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column label="反馈时间" align="center" :show-overflow-tooltip="true">
+				<el-table-column label="申请时间" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
-						<span class="span-dqzt" :title="scope.row.fksj">{{scope.row.fksj| timestampToTime}}</span>
+						<span class="span-dqzt">{{scope.row.sqrq| timestampToTime}}</span>
 					</template>
 				</el-table-column>
 				<el-table-column label="状态" align="center" :show-overflow-tooltip="true">

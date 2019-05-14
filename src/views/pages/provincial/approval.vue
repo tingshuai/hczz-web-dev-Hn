@@ -14,8 +14,8 @@
 			</el-form>
 		</div> -->
 		<Form inline :label-width="75" class="search-ct">
-			<FormItem label="案件名称：">
-				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案件名称" clearable style="width: 180px"></Input>
+			<FormItem label="案事件名称：">
+				<Input type="text" v-model="basePage.ajmc"  placeholder="请输入案事件名称" clearable style="width: 180px"></Input>
 			</FormItem>
 			<FormItem label="申请人：">
 				<Input type="text" v-model.trim="basePage.sqr" placeholder="请输入申请人" clearable style="width: 180px"></Input>
@@ -57,7 +57,7 @@
 						<span :title="scope.row.sqbmmc">{{scope.row.sqbmmc}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column label="案件名称" align="center" :show-overflow-tooltip="true">
+				<el-table-column label="案事件名称" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
 						<span :title="scope.row.ajmc">{{scope.row.ajmc}}</span>
 					</template>
