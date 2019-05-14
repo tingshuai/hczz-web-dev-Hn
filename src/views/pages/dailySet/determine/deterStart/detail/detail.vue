@@ -23,8 +23,8 @@
 					<th>{{sqObj.sqrlxdh}}</th>
 				</tr>
 				<tr>
-					<th class="oddTh">简要内容内容</th>
-					<th colspan="3" :title="sqObj.jyrwnr" class="text-overflow">{{sqObj.jyrwnr}}</th>
+					<th class="oddTh">简要内容</th>
+					<th colspan="3" :title="sqObj.jyrwnr" class="breakWord">{{sqObj.jyrwnr}}</th>
 				</tr>
 				<tr>
 					<th class="oddTh">任务附件</th>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<th class="oddTh">事件描述</th>
-					<th colspan="3" :title="sqObj.jyaq" class="text-overflow">{{sqObj.jqajzs}}</th>
+					<th colspan="3" :title="sqObj.jyaq" class="breakWord">{{sqObj.jqajzs}}</th>
 				</tr>
 				<tr>
 					<th class="oddTh">事件案发地点</th>
@@ -81,8 +81,8 @@
 					<th>{{sqxxObj.sqrlxdh}}</th>
 				</tr>
 				<tr>
-					<th class="oddTh">简要内容内容</th>
-					<th colspan="3" :title="sqxxObj.jyrwnr" class="text-overflow">{{sqxxObj.jyrwnr}}</th>
+					<th class="oddTh">简要内容</th>
+					<th colspan="3" :title="sqxxObj.jyrwnr" class="breakWord">{{sqxxObj.jyrwnr}}</th>
 				</tr>
 				<tr>
 					<th class="oddTh">任务附件</th>

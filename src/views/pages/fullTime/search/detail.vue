@@ -48,7 +48,7 @@
 				</tr>
 				<tr>
 					<th>简要任务内容</th>
-					<th colspan="3">{{detailObj.jyrwnr}}</th>
+					<th colspan="3" class="breakWord">{{detailObj.jyrwnr}}</th>
 				</tr>
 				<tr>
 					<th>任务附件</th>
