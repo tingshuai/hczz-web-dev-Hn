@@ -27,7 +27,7 @@
 			        <FormItem label="反馈速度">
 			            <el-rate v-model="formDynamic.fksu" :disabled="disabled"></el-rate>
 			        </FormItem>
-			        <FormItem label="应用效果">
+			        <FormItem label="反馈效果">
 			            <el-rate v-model="formDynamic.yyxg" :disabled="disabled"></el-rate>
 			        </FormItem>
 			        <Row>
@@ -94,7 +94,7 @@
 				formDynamic:{
 					fwtd:0,//服务态度
 					fksu:0,//反馈速度
-					yyxg:0,//应用效果
+					yyxg:0,//反馈效果
 					sfpa:'',//是否破案
 					sffhzy:'',//是否发挥作用
 					zhrs:'',//抓获人数

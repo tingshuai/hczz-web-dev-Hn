@@ -8,7 +8,7 @@
 				<Input type="text" v-model.trim="basePage.xfrxm" placeholder="请输入下发人" clearable style="width: 180px"></Input>
 			</FormItem>
 			<FormItem label="下发时间：">
-				<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+				<DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 			</FormItem>
 			<!-- <FormItem label="状态：">
 				<Select v-model="basePage.spzt" style="width: 180px" filterable clearable>

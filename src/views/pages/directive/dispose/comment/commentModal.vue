@@ -27,7 +27,7 @@
 					<Rate v-model="formValidate.fksd">
 					</Rate>
 				</el-form-item>
-				<el-form-item label="应用效果：">
+				<el-form-item label="反馈效果：">
 					<Rate v-model="formValidate.yyxg">
 					</Rate>
 				</el-form-item>

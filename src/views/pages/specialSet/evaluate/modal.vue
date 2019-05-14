@@ -27,7 +27,7 @@
 			        <FormItem label="反馈速度">
 			            <el-rate v-model="formDynamic.fksu" :disabled="disabled"></el-rate>
 			        </FormItem>
-			        <FormItem label="应用效果">
+			        <FormItem label="反馈效果">
 			            <el-rate v-model="formDynamic.yyxg" :disabled="disabled"></el-rate>
 			        </FormItem>
 			        <Row>

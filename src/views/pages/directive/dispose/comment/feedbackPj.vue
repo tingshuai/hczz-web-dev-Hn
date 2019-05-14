@@ -15,7 +15,7 @@
 					</th>
 				</tr>
 				<tr>
-					<th>应用效果</th>
+					<th>反馈效果</th>
 					<th>
 						<Rate v-model="formValidate.yyxg" allow-half  :disabled="disabled"></Rate>
 					</th>

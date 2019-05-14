@@ -9,7 +9,7 @@
 					<el-input v-model.trim="basePage.xfrxm" placeholder="请输入下发人" clearable size="small" style="width: 180px"></el-input>
 				</FormItem>
 				<FormItem label="下发时间：">
-					<DatePicker type="daterange"   :start-date="new Date(new Date()-30*24*3600*1000)" placement="bottom-end" placeholder="请输入下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+					<DatePicker type="daterange"     placement="bottom-end" placeholder="请输入下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<FormItem label="状态：">
 					<el-select v-model="basePage.zt" clearable filterable size="small" placeholder="请选择状态" style="width: 180px">

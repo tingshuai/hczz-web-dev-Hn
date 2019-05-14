@@ -21,7 +21,7 @@
                        style="width: 180px"></Input>
             </FormItem>
             <FormItem label="申请时间：">
-                <DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable
+                <DatePicker type="daterange"   clearable
                             placement="bottom-end" placeholder="请选择申请时间" style="width: 180px"
                             @on-change="handleDate"></DatePicker>
             </FormItem>

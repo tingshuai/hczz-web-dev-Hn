@@ -24,7 +24,7 @@
 						</th>
 					</tr>
 					<tr>
-						<th>应用效果</th>
+						<th>反馈效果</th>
 						<th colspan="3">
 							<el-rate v-model="value3"></el-rate>
 						</th>

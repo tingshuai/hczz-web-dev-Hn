@@ -9,7 +9,7 @@
 					<Input type="text" clearable v-model.trim="basePage.sqrxm" placeholder="请输入申请人"></Input>
 				</FormItem>
 				<FormItem label="申请时间：" :label-width="84">
-					<DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" placement="bottom-end" placeholder="请输入" style="width: 200px" @on-change="handleDate"></DatePicker>
+					<DatePicker type="daterange"   placement="bottom-end" placeholder="请输入" style="width: 200px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<FormItem label="任务状态：" :label-width="84">
 					<Select v-model="basePage.zt" filterable clearable>

@@ -71,7 +71,7 @@
 			</Col>
 			<Col span="12">
 				<FormItem label="申请时间" prop="starttime">
-				    <DatePicker type="daterange" clearable :start-date="new Date(new Date()-30*24*3600*1000)" clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 100%" @on-change="handleDate"></DatePicker>
+				    <DatePicker type="daterange" clearable   clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 100%" @on-change="handleDate"></DatePicker>
 			    </FormItem>
 			</Col>
 		</Row>

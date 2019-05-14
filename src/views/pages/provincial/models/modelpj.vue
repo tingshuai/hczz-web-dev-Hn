@@ -39,22 +39,6 @@
 					</el-col>
 				</el-row>
 				<el-row>
-					<el-col :span="12">
-						<el-form-item label="手续附件：">
-							<a v-for='(item,index) in dirTaskFileSX' :key="index">
-								<div style="margin: 0;color:#409eff" @click="handlePrev(item)" class="tastFile" :title="item.filename"><i class="el-icon-document"></i>{{item.filename+"."+item.category}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
-							</a>
-						</el-form-item>
-					</el-col>
-					<el-col :span="12">
-						<el-form-item label="任务附件：">
-							<a v-for='(item,index) in dirTaskFileRW' :key="index">
-								<div style="margin: 0;color:#409eff" @click="handlePrev(item)" class="tastFile" :title="item.filename"><i class="el-icon-document"></i>{{item.filename+"."+item.category}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
-							</a>
-						</el-form-item>
-					</el-col>
-				</el-row>
-				<el-row>
 					<el-col :span="24">
 						<el-form-item label="案件简介：">
 							<span :title="xcObj.bz" class="oSpan">{{xcObj.bz}}</span>
@@ -69,6 +53,23 @@
 					</el-col>
 				</el-row>
 				<el-row>
+					<el-col :span="12">
+						<el-form-item label="手续附件：">
+							<a v-for='(item,index) in dirTaskFileSX' :key="index">
+								<div style="margin: 0;color:#409eff" @click="handlePrev(item)" class="tastFile" :title="item.filename"><i class="el-icon-document"></i>{{item.filename+"."+item.category}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</a>
+						</el-form-item>
+					</el-col>
+					<el-col :span="12">
+						<el-form-item label="任务附件：">
+							<a v-for='(item,index) in dirTaskFileRW' :key="index">
+								<div style="margin: 0;color:#409eff" @click="handlePrev(item)" class="tastFile" :title="item.filename"><i class="el-icon-document"></i>{{item.filename+"."+item.category}}&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</a>
+						</el-form-item>
+					</el-col>
+				</el-row>				
+				<br/>
+				<el-row>
 					<el-col :span="24">
 						<el-form-item label="反馈结果：">
 							<span :title="xcObj.fknr" class="oSpan">{{xcObj.fknr}}</span>
@@ -82,6 +83,7 @@
 						</el-form-item>
 					</el-col>
 				</el-row>
+				<br/>
 				<el-row v-if="isPj">
 					<el-col :span="24">
 						<el-form-item label="反馈态度：">
@@ -90,7 +92,7 @@
 						<el-form-item label="反馈速度：">
 							<el-rate v-model="formValidate.fksu" text-color="#ff9900" style="line-height:50px"></el-rate>
 						</el-form-item>
-						<el-form-item label="应用效果：">
+						<el-form-item label="反馈效果：">
 							<el-rate v-model="formValidate.yyxg" text-color="#ff9900" style="line-height:50px"></el-rate>
 						</el-form-item>
 					</el-col>
@@ -136,7 +138,7 @@
 						<el-form-item label="反馈速度">
 							<el-rate v-model="pjObj.fksu" disabled text-color="#ff9900" style="line-height:50px"></el-rate>
 						</el-form-item>
-						<el-form-item label="应用效果">
+						<el-form-item label="反馈效果">
 							<el-rate v-model="pjObj.yyxg" disabled text-color="#ff9900" style="line-height:50px"></el-rate>
 						</el-form-item>
 					</el-col>
