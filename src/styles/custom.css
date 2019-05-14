@@ -1,0 +1,261 @@
+.pagination-ct {
+  padding-bottom: 5px;
+  padding-top: 7px;
+  width: 100%;
+  text-align: center;
+}
+.pagination-ct .clientPage {
+  margin-top: 10px;
+  margin-left: 0px;
+}
+#tableDiv {
+  overflow: visible !important;
+}
+.clearfix::after {
+  display: block;
+  content: " ";
+  clear: both;
+}
+.modal-ct.lookStyle .ivu-form-item-label {
+  height: 36px;
+  line-height: 36px;
+}
+.modal-ct.lookStyle .ivu-form-item .ivu-form-item-content {
+  height: 36px;
+  line-height: 36px;
+}
+.modal-ct.lookStyle .ivu-form-item .ivu-form-item-content .el-input__inner {
+  height: 36px;
+  line-height: 36px;
+  padding-left: 8px;
+}
+.modal-ct.lookStyle .ivu-form-item .ivu-form-item-content .el-input__suffix {
+  color: #80848f;
+}
+.modal-ct.lookStyle .ivu-form-item .ivu-form-item-content .el-input__suffix .el-input__icon {
+  line-height: 36px;
+}
+.modal-ct.lookStyle .ivu-select-single .ivu-select-selection {
+  height: 36px;
+  box-sizing: border-box;
+}
+.modal-ct.lookStyle .ivu-select-single .ivu-select-selection .ivu-select-placeholder {
+  font-size: 14px;
+  line-height: 36px;
+  height: 36px;
+}
+.modal-ct.lookStyle .ivu-select-single .ivu-select-input {
+  font-size: 14px;
+}
+.modal-ct.lookStyle .ivu-select-single .ivu-select-selected-value {
+  font-size: 14px;
+  line-height: 36px;
+  height: 36px;
+}
+.page-ct .tree2 {
+  transition: width .5s;
+}
+.page-ct .table-ct {
+  transition: width .5s;
+  position: relative;
+  z-index: 9999;
+}
+.page-ct .folder-arrow {
+  display: block;
+  width: 20px;
+  height: 70px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  margin-top: -50px;
+  border-radius: 5px;
+  box-shadow: 2px 0px 3px 0px #CCCCCC, 0px 2px 3px 0px #CCCCCC;
+  z-index: 99;
+  cursor: pointer;
+}
+.page-ct .folder-arrow::after {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  margin-top: -9px;
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: 9px;
+  border-style: solid;
+  border-color: transparent transparent transparent #cccccc;
+}
+.page-ct.folder .tree2 {
+  width: 0;
+  border: 0px;
+}
+.page-ct.folder .table-ct {
+  width: calc(99%) !important;
+}
+.page-ct.folder .table-ct .folder-arrow::after {
+  border-color: transparent #cccccc transparent transparent;
+  left: -4px;
+}
+.cancelBtn.ivu-btn {
+  border: 1px solid #d3d4d6;
+}
+.modal-ct .ivu-modal-content .ivu-modal-body {
+  margin: 4px 20px 20px 20px;
+}
+.modal-ct .ivu-modal-content .ivu-modal-close i {
+  color: #fff;
+}
+.modal-ct .ivu-modal-content .ivu-modal-header {
+  background-color: #397cc0;
+}
+.modal-ct .ivu-modal-content .ivu-modal-header .ivu-modal-header-inner {
+  color: #fff;
+  padding-left: 10px;
+}
+.modal-ct .ivu-modal-content .ivu-modal-header .ivu-modal-header-inner::before {
+  display: block;
+  content: "";
+  width: 2px;
+  height: 16px;
+  background: #fff;
+  position: absolute;
+  left: 13px;
+  top: 16px;
+}
+.modal-ct.el-dialog__wrapper {
+  z-index: 1000;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__header {
+  background-color: #397cc0;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e9eaec;
+  line-height: 1;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__header .el-dialog__close {
+  color: #fff;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__header .el-dialog__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  padding-left: 10px;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__header .el-dialog__title::before {
+  display: block;
+  content: "";
+  width: 2px;
+  height: 16px;
+  background: #fff;
+  position: absolute;
+  left: 13px;
+  top: 18px;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__body {
+  padding: 10px 20px 20px;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__body::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__footer {
+  background-color: #f5f7f9;
+  border-top: 1px solid #e9eaec;
+  padding: 10px 20px;
+}
+.modal-ct.el-dialog__wrapper .el-dialog .el-dialog__footer button {
+  margin-left: 10px;
+}
+.shuttle-select-ct {
+  display: flex;
+  justify-content: space-between;
+}
+.shuttle-select-ct li {
+  width: calc(50% - 10px);
+  list-style: none;
+  color: #777777;
+}
+.shuttle-select-ct li .dept-search-ct {
+  position: relative;
+}
+.shuttle-select-ct li .dept-search-ct .el-input__suffix {
+  cursor: pointer;
+}
+.shuttle-select-ct li > span {
+  display: block;
+  padding-bottom: 10px;
+}
+.shuttle-select-ct li > div {
+  border: 1px solid #E9E9ED;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+}
+.shuttle-select-ct li > div .el-scrollbar-wrap {
+  padding: 15px;
+  height: calc(106%);
+}
+.shuttle-select-ct li > div .el-scrollbar-wrap .el-scrollbar-view {
+  width: 100%;
+}
+.shuttle-select-ct li > div .selected-wrap {
+  padding: 10px 5px 10px 10px;
+}
+.shuttle-select-ct li > div .selected-wrap li {
+  line-height: 36px;
+  position: relative;
+  width: 100%;
+}
+.shuttle-select-ct li > div .selected-wrap li i {
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  cursor: pointer;
+}
+.shuttle-select-ct li > div .selected-wrap li svg {
+  margin-right: 5px;
+  color: #E5E4E9;
+}
+.table-ct .el-table {
+  border: 1px solid #e9eaec;
+  box-sizing: border-box;
+}
+.table-ct .el-table .el-table__header th {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0;
+  color: #495060;
+  font-size: 12px;
+  background-color: #f8f8f9;
+}
+.table-ct .el-table .el-table__body-wrapper tr:hover > td {
+  background-color: #ebf7ff;
+}
+.table-ct .el-table .el-table__body-wrapper td .cell {
+  white-space: nowrap;
+}
+.table-ct .el-table .el-table__body-wrapper .el-table__row--striped td {
+  background-color: #f8f8f9;
+}
+.table-ct .el-table .el-table__body-wrapper .el-table__row--striped td .cell {
+  white-space: nowrap;
+}
+.directive-ct {
+  height: 100%;
+  border: 1px solid #e9eaec;
+}
+.directive-ct .el-card__body {
+  padding: 0;
+  height: 100%;
+}
+.directive-ct .el-card__body .search-ct {
+  padding: 15px;
+  padding-bottom: 0px;
+}
+.directive-ct .table-ct .el-table {
+  border-right: 0px;
+  border-left: 0px;
+}
