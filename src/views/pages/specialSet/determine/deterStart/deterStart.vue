@@ -17,12 +17,13 @@
 				<!--<Button  v-show="!more" @click="close">收起</Button>-->
 			</div>
 		</div>
+		<div class="break"></div>
 		<div class="deterStartCon">
 			<section class="headerWraper">
 				<div class="left"> 
 					<span class="middle">案事件名称：</span>
 					<span class="overHidden middle" :title="content">{{content}}</span>
-					<span>&nbsp;|&nbsp;</span>
+					<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 					<span class="middle">{{zt}}</span>
 				</div>
 				<div class="right topRight">
@@ -235,12 +236,13 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+
 	.deterStartTop{
 		overflow: hidden;
 		border: 1px solid #e6e6e6;
-	    background: white;
-	    padding: 20px;
+		background: white;
+		padding: 10px;
 		.left{
 			float: left;
 			span{
@@ -262,11 +264,17 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		background-color: white;
+		.break{
+			background-color: #f0f0f0;
+			height: 10px;		
+		}		
 	}
 	.deterStartCon{
 		flex: 1;
 		display: flex;
 		flex-direction: column;
+		height: calc(100% - 76px);
 		.overHidden{
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -277,10 +285,13 @@
 		}
 		.caseMsg{
 			flex: 1;
+			height: calc(100% - 50px);
 		}
 		.headerWraper{
 			display: flex;
 			justify-content: space-between;
+			min-height: 50px;
+			height: 50px;			
 			.left{
 				display: flex;
 				align-items: center;

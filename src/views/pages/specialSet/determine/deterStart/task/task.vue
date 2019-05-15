@@ -1,12 +1,12 @@
 '
 <template>
-	<div class="task" :style="{height:height}">
+	<div class="task">
 		<ul>
 			<li v-for="(item,index) in dataList" :key="index">
 				<div>
 					<div :class="item.rwjb == 0 ? 'top' : item.rwjb ==1 ?'topone' : 'toptwo'" style="width: 100%;">
 
-						<div class="leftTop" style="width: calc(100% - 400px);">
+						<div class="leftTop">
 							<i class="el-icon-caret-right" v-show="!item.flag" @click="setFlag(item)"></i>
 							<i class="el-icon-caret-bottom" v-show="item.flag" @click="setFlag(item)"></i>
 							<span class="roundOne" v-if="item.rwjb==0"></span>
@@ -179,7 +179,8 @@
 
 <style lang="less" scoped>
 	.task {
-		overflow-y: auto;
+		height: 100%;
+		padding: 10px 0;
 		.taskOverHidden {
 			display: inherit;
 		}
@@ -187,6 +188,8 @@
 			list-style: none;
 			margin: 0 16px !important;
 			border: 1px solid #e6e6e6;
+			overflow: auto;
+			height: 100%;			
 			li {
 				background: white;
 				padding: 0 16px 10px 16px !important;
@@ -282,9 +285,11 @@
 	}
 		
 	.topone{
-		display: inline-block !important;
+		display: flex;
 		width: 100%;
 		padding-top: 10px;
+		justify-content: space-between;
+		align-items: center;
 		.leftTop {
 			display: inline-block !important;
 			width:calc(~'100% - 180px')

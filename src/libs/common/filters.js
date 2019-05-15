@@ -58,7 +58,7 @@ export function taskZt(val) {
 	} else if(val == 2) {
 		return '待反馈'
 	} else if(val == 3) {
-		return '待结束'
+		return '已反馈'
 	} else {
 		return '已完成'
 	}

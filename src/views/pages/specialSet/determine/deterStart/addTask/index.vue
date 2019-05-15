@@ -34,8 +34,8 @@
 								</Col>
 							</div>
 						</FormItem>
-						<FormItem label="简要任务内容" prop="rwnr">
-							<Input v-model.trim="formDynamic.rwnr" clearable type="textarea" :rows="4" placeholder="请输入反馈内容" :maxlength="120"></Input>
+						<FormItem label="任务内容" prop="rwnr">
+							<Input v-model.trim="formDynamic.rwnr" clearable type="textarea" :rows="4" placeholder="请输入任务内容" :maxlength="120"></Input>
 						</FormItem>
 						<FormItem label="附件">
 							<loadFile @on-change="proceduresFiles" ref="proceduresFiles"></loadFile>

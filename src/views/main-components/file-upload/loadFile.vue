@@ -39,7 +39,16 @@
 	.progressbar {
 		display: inline-block;
 		width: 20%;
+		display: flex;
+		margin-left: 10px;		
 		/*padding-left: 25px;*/
+	}
+	.fileList{
+		>li{
+			display: flex;
+			align-items: center;
+			padding-top:8px;
+		}
 	}
 </style>
 
@@ -48,8 +57,8 @@
 		<div style="text-align: left;">
 			<Button icon="ivu-icon ivu-icon-ios-cloud-upload-outline" class="uploadBtn" @click="upload(files)">上传文件</Button>
 			<input type="file" name="files" :accept="accept" id="file" @change="change($event)" :multiple="multiple" />
-			<ul>
-				<li v-for="(item,index) in obj.fileList" style="padding-top:8px;">
+			<ul class="fileList">
+				<li v-for="(item,index) in obj.fileList" :key="index">
 					<span class="fjSpan" :title="item.name">{{item.name}}</span>
 					<div class="progressbar">
 						<div class="fill" style="height:10px;vertical-align: top;"></div>

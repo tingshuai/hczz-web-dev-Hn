@@ -165,7 +165,7 @@
           addChildren (arr1, arr2) {
               $.each(arr1, (index, val) => {
                   $.each(arr2, (i, v) => {
-                      if (val.rwjb == Number(v.rwjb) - 1) {
+                      if (val.rwjb == Number(v.rwjb) - 1 && val.id==v.fjid) {
                           val.children.push(v);
                       }
                   });

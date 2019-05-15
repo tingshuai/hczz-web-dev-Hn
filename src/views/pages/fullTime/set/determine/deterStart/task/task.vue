@@ -1,6 +1,6 @@
 '
 <template>
-	<div class="task" :style="{height:height}">
+	<div class="task">
 		<ul>
 			<li v-for="(item,index) in dataList" :key="index">
 				<div>

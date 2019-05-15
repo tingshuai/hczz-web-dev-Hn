@@ -271,9 +271,11 @@
 	}
 	
 	.topone {
-		display: inline-block !important;
+		display: flex;
 		width: 100%;
 		padding-top: 10px;
+		justify-content: space-between;
+		align-items: center;
 		.leftTop {
 			display: inline-block !important;
 			width:calc(~'100% - 180px') .roundTwo {
