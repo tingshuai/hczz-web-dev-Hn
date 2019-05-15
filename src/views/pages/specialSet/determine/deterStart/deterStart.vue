@@ -1,5 +1,5 @@
 <template>
-	<div style="height: 100%;">
+	<div class="caseWraper">
 		<div class="deterStartTop">
 			<div class="left">
 				<Button  @click="backbtn" class="margin-right-20">返回</Button>
@@ -18,42 +18,33 @@
 			</div>
 		</div>
 		<div class="deterStartCon">
-			
-			<div class="right topRight">
-				<hr />
-				<el-tabs v-model="activeName"  @tab-click="handleClick">
-				    <el-tab-pane label="我的任务" name="task">
-				    	<div slot="label">
-				    		<span>我的任务</span>
-				    		<span class="oSpan" @click="getNew">{{numbers}}</span>
-				    	</div>
-				    </el-tab-pane>
-				    <el-tab-pane label="详细信息" name="detail">
-				    </el-tab-pane>
-				    <!--<el-tab-pane label="案件特征" name="feature">
-				    </el-tab-pane>
-				    <el-tab-pane label="研判信息" name="determineMessage">
-				    </el-tab-pane>-->
-				  </el-tabs>
-				  <component :is="currentView" style="margin-top: 74px;background: white;" ></component>
-			</div>
-			<div class="left" style="height:59px;line-height:59px;"> 
-				<span class="middle">案事件名称：</span>
-				<span class="overHidden middle" :title="content">{{content}}</span>
-				<span class="middle">| {{zt}}</span>
-			</div>
-			<!--小组管理-->
-			<div v-if="addGroupModal">
-				<groupManage :show.sync="addGroupModal" :zzid="zaid" :isFzz="isFzz"></groupManage>
-			</div>
-			<!--小组成员-->
-			<div v-if="memebersShow">
-				<groupMembers ref="groupMembers" :show="memebersShow" :zzid="zaid" @update="memebersShow=false"></groupMembers>
-			</div>
-			<!--处理日志-->
-			<div v-if="flowsheetShow">
-				<treatmentFlowsheet :show.sync="flowsheetShow" @update="flowsheetShow=false" :flowFnc="flowFnc"></treatmentFlowsheet>
-			</div>
+			<section class="headerWraper">
+				<div class="left"> 
+					<span class="middle">案事件名称：</span>
+					<span class="overHidden middle" :title="content">{{content}}</span>
+					<span>&nbsp;|&nbsp;</span>
+					<span class="middle">{{zt}}</span>
+				</div>
+				<div class="right topRight">
+					<Tabs v-model="activeName"  @on-click="handleClick">
+						<TabPane :label="label" name="task"></TabPane>
+						<TabPane label="详细信息" name="detail"></TabPane>
+					</Tabs>
+				</div>
+			</section>
+			<component :is="currentView" class="caseMsg"></component>
+		</div>
+		<!--小组管理-->
+		<div v-if="addGroupModal">
+			<groupManage :show.sync="addGroupModal" :zzid="zaid" :isFzz="isFzz"></groupManage>
+		</div>
+		<!--小组成员-->
+		<div v-if="memebersShow">
+			<groupMembers ref="groupMembers" :show="memebersShow" :zzid="zaid" @update="memebersShow=false"></groupMembers>
+		</div>
+		<!--处理日志-->
+		<div v-if="flowsheetShow">
+			<treatmentFlowsheet :show.sync="flowsheetShow" @update="flowsheetShow=false" :flowFnc="flowFnc"></treatmentFlowsheet>
 		</div>
 	</div>
 </template>
@@ -81,6 +72,16 @@
 		},
 		data(){
 			return {
+                label: (h) => {
+                    return h('div', [
+                        h('span', '我的任务'),
+                        h('Badge', {
+                            props: {
+                                count: this.numbers
+                            }
+                        })
+                    ])
+                },
 				more:true,//更多按钮
 				activeName:'task',
 				taskList:[],//我的任务树
@@ -136,16 +137,19 @@
 		},
 		mounted(){
 			this.getOffice();
-			this.getNumber();
 			this.zt=this.$route.query.zt;
 			this.flowFnc=this.getFlow();
+			this.$nextTick(()=>{
+				this.getNumber();
+			})
 		},
 		methods:{
 			getNumber(){
+				let that = this;
 				api.api('post', api.configUrl + '/hczz/za/getSqxxXx', {
 					id: this.determineId
 				}).then(res=>{
-					this.numbers=res.rwfp.filter(val=>{
+					that.numbers=res.rwfp.filter(val=>{
 						return val.zxrid==this.accountId
 					}).length;
 				})
@@ -254,15 +258,15 @@
 			}
 		}
 	}
+	.caseWraper{
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
 	.deterStartCon{
-		position: relative;
-		border: 1px solid #e6e6e6;
-	    background: white;
-	    padding: 0 0 8px 0;
-	    height: 59px;
-	    margin-top: 20px;
-	    background: #fafafa;
-	    height: calc(~"100% - 100px");
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 		.overHidden{
 			overflow: hidden;
 			text-overflow: ellipsis;
@@ -271,53 +275,19 @@
 		    display: inline-block;
 		    line-height: 13px;
 		}
-		.left{
-			font-size: 14px;
-		    color: #333333;
-		    float: left;
-		    height: 50px;
-		    width: 300px;
-		    padding-left: 20px;
-		    line-height: 50px;
-		    font-family: "microsoft yahei";
-			span{
-				color: #333333;
-				font-size: 14px;
-			}
+		.caseMsg{
+			flex: 1;
 		}
-		.topRight{
-			float: right;
-			width: 100%;
-			margin-left: -300px;
-			margin-bottom: -15px;
-			border: 1px solid #fafafa;
-			background: white;
-			hr{
-				position: absolute;
-			    top: 49px;
-			    background: #ececec;
-			    width: 100%;
+		.headerWraper{
+			display: flex;
+			justify-content: space-between;
+			.left{
+				display: flex;
+				align-items: center;
+				padding-left: 20px;				
 			}
-			.oSpan{
-				height:20px;
-				width: 20px;
-				display: inline-block;
-				border-radius: 50%;
-				background: #f4884e;
-				color: white;
-				text-align: center;
-				line-height: 20px;
-				position: absolute;
-			}
-			.el-tabs--top{
-				width:377px;
-				float:right;
-				.el-tabs__nav{
-					height: 59px;
-				}
-				#tab-task{
-					line-height: 59px;
-				}
+			.topRight{
+				
 			}
 		}
 	}

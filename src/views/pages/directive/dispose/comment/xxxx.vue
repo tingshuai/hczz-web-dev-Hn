@@ -21,7 +21,7 @@
 					</tr>
 					<tr>
 						<th>指令内容</th>
-						<th colspan="5"></th>
+						<th colspan="5" class="breakWord"></th>
 					</tr>
 					<tr>
 						<th>接收部门</th>
