@@ -33,7 +33,10 @@
     "sortablejs": "~1.7.0",
     "vue": "~2.5.16",
     "vue-router": "~3.0.1",
-    "vuex": "~3.0.1"
+    "vuex": "~3.0.1",
+    "yycp-LeadorMap": "~1.0.1",
+    "yycp-components": "^1.0.38",
+    "yycp-util": "^1.0.4"
   },
   "devDependencies": {
     "acorn": "~6.0.0",

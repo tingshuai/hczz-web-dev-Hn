@@ -15,8 +15,8 @@ import instance from '@/fetch/api.js';
 import './views/main-components/icons/index.js';
 import './libs/scroll.js';
 import $ from 'jquery';
-// import yycpComponents from 'yycp-components';
-// import Map from 'yycp-LeadorMap/dist/yycp-LeadorMap.js';
+import yycpComponents from 'yycp-components';
+import Map from 'yycp-LeadorMap/dist/yycp-LeadorMap.js';
 // import '../src/static/ueditor/ueditor.config.js';
 // import '../src/static/ueditor/ueditor.all.js';
 // import '../src/static/ueditor/lang/zh-cn/zh-cn.js';
@@ -26,14 +26,14 @@ import echarts from 'echarts';
 import Swiper from 'swiper';
 // import 'swiper/dist/css/swiper.min.css';
 import htmlToPdf from './libs/htmlTopdf';
-// Vue.use(Map);
+Vue.use(Map);
 // Vue.use(layui);
 Vue.use(htmlToPdf);// 生成pdf
 Vue.prototype.$echarts = echarts;
 // 引入svg组件
 const request = require.context('@/images/svg', true, /\.svg$/);
 request.keys().forEach(request);
-// Vue.use(yycpComponents);
+Vue.use(yycpComponents);
 
 Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
