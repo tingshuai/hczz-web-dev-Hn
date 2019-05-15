@@ -50,19 +50,19 @@ module.exports = merge(webpackBaseConfig, {
         proxy: {
             //匹配代理的url
             '/api/v1': {
-                target: 'http://192.168.0.71:7081',
+                target: 'http://192.168.0.71:7081',// 'http://192.168.0.71:7081',
                 //路径重写
                 pathRewrite: { '^/api/v1': '/' },
                 changeOrigin: true
             },
             '/api/v2': {
-                target: 'http://192.168.1.152:7089',
+                target: 'http://192.168.1.152:7089',//'http://192.168.1.152:7089',
                 //路径重写
                 pathRewrite: { '^/api/v2': '/' },
                 changeOrigin: true
             },
             '/api/v3': {
-                target: 'http://192.168.0.71:7080',
+                target: 'http://192.168.0.71:7080',//'http://192.168.0.71:7080',
                 pathRewrite: { '^/api/v3': '/' },
                 changeOrigin: true
             },
