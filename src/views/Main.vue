@@ -288,13 +288,9 @@
         </div>
         <div class="single-page-con" :style="{left: shrink?'60px':'180px'}">
             <div class="header-middle-con">
-                <!-- <div class="main-breadcrumb" style="display: none;">
-                    <breadcrumb-nav :currentPath="currentPath"></breadcrumb-nav>
-                </div> -->
                 <div class="tags-con" style="margin-left: 30px;">
                     <tags-page-opened :pageTagsList="pageTagsList"></tags-page-opened>
                 </div>
-
             </div>
             <div class="single-page reset-page">
                 <keep-alive :include="cachePage">
@@ -650,7 +646,7 @@
                     this.getDbList(times)
                 }
             }, 120000)
-            console.log(this.pageTagsList)
+            console.log('pageTagsList',this.pageTagsList)
             this.init();
         },
         created() {

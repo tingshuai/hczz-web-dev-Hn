@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<th>指令内容</th>
-					<th colspan="3" :title="dirInfo.zlnr">{{dirInfo.zlnr}}</th>
+					<th colspan="3" :title="dirInfo.zlnr" class="breakWord">{{dirInfo.zlnr}}</th>
 				</tr>
 				<!-- <tr>
 					<th>事件案发地点</th>

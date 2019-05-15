@@ -7,14 +7,14 @@
 				</div>
 				<div  style="height: 500px;overflow: auto;">
 					<el-tabs v-model="activeName"  @tab-click="handleClick" style="height: 450px;">
-						<el-tab-pane label="研判结果" name="result">
-							<result :fncResult="fncResult"></result>
-						</el-tab-pane>
 						<el-tab-pane label="流程轨迹" name="handle">
 							<handle :fncHandle='fncHandle'></handle>
 						</el-tab-pane>
 						<el-tab-pane label="详细信息" name="detail">
 							<detail :fncDetail="fncDetail"></detail>
+						</el-tab-pane>
+						<el-tab-pane label="研判结果" name="result">
+							<result :fncResult="fncResult"></result>
 						</el-tab-pane>
 					</el-tabs>
 				</div>
