@@ -13,15 +13,15 @@
             </el-form-item>
         </el-form> -->
         <Form inline :label-width="75" class="search-ct">
-            <FormItem label="案事件名称：">
-                <Input type="text" v-model="basePage.ajmc" placeholder="请输入案事件名称" clearable style="width: 180px"></Input>
+            <FormItem label="案件名称：">
+                <Input type="text" v-model="basePage.ajmc" placeholder="请输入案件名称" clearable style="width: 180px"></Input>
             </FormItem>
             <FormItem label="申请人：">
                 <Input type="text" v-model.trim="basePage.sqrxm" placeholder="请输入申请人" clearable
                        style="width: 180px"></Input>
             </FormItem>
             <FormItem label="申请时间：">
-                <DatePicker type="daterange"   clearable
+                <DatePicker type="daterange" :start-date="new Date(new Date()-30*24*3600*1000)" clearable
                             placement="bottom-end" placeholder="请选择申请时间" style="width: 180px"
                             @on-change="handleDate"></DatePicker>
             </FormItem>
@@ -30,7 +30,7 @@
             <!-- <el-button type="primary"  @click="add()" size="small">新建</el-button> -->
         </Form>
 
-        <el-dialog class="modal-ct workBench-group-modal thetree" :title="title" @close='closeModel' :visible.sync="visible" :modal-append-to-body='false' width="1030px">
+        <el-dialog class="modal-ct workBench-group-modal thetree" :title="title" @close='closeModel' :visible.sync="visible" append-to-body width="1030px">
             <el-form :model="formValidate" ref="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
                 <el-row>
                     <el-col :span="12">
@@ -57,12 +57,12 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="12">
-                        <el-form-item label="案件编号：" prop="sabjbh">
-                            <el-input v-if="flag" v-model.trim="formValidate.sabjbh" clearable size="small"  :maxlength="20" placeholder="请输入"></el-input>
+                        <el-form-item label="案件编号：" prop="sabjbh" class="ajbh">
+                            <el-input v-if="flag" v-model.trim="formValidate.sabjbh" clearable size="small"   :maxlength="20" placeholder="请输入"></el-input>
                             <span v-if="!flag" :title="xcObj.sabjbh" class="oSpan">{{xcObj.sabjbh}}</span>
+                            <el-button v-if="flag" type="primary" size="small" @click="showDialogAjxx = true" plain>载入案件信息</el-button>
                         </el-form-item>
                     </el-col>
-
                 </el-row>
                 <el-row>
                     <el-col :span="12">
@@ -198,12 +198,16 @@
             </el-form>
             <div slot="footer">
                 <el-button type="primary" v-if="flag" @click="closeModel" class="cancelBtn" size="small">取消</el-button>
-                <el-button type="primary" v-show="!flag" @click="closeModel" class="cancelBtn" size="small">关闭
-                </el-button>
-                <el-button v-if="flag" type="primary" class="sureBtn successBtn" @click="saveInfo" size="small"
-                           :loading="xjloading">确定
-                </el-button>
+                <el-button type="primary" v-show="!flag" @click="closeModel" class="cancelBtn" size="small">关闭</el-button>
+                <el-button v-if="flag" type="primary" class="sureBtn successBtn" @click="saveInfo" size="small" :loading="xjloading">确定</el-button>
             </div>
+        </el-dialog>
+        <el-dialog width="80%" title="选择案件信息" append-to-body class="dialogAjxx" :visible.sync="showDialogAjxx">
+            <model-ajxx @selectAjxx="selectAjxx"></model-ajxx>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="showDialogAjxx = false">取 消</el-button>
+                <el-button type="primary" @click="siginAjxxMsg">确 定</el-button>
+            </div>            
         </el-dialog>
         <div>
             <receive-office :show.sync="isReceive" @handleOffice="handleOffice"></receive-office>
@@ -230,11 +234,11 @@
                         <span :title="scope.row.ajmc">{{scope.row.ajmc}}</span>
                     </template>
                 </el-table-column>
-                <el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
+                <!-- <el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
                     <template slot-scope="scope">
                         <span :title="scope.row.jyrwnr" class="sl">{{scope.row.jyrwnr}}</span>
                     </template>
-                </el-table-column>
+                </el-table-column> -->
                 <!-- <el-table-column label="联系电话" align="center" :show-overflow-tooltip="true">
                     <template slot-scope="scope">
                         <span :title="scope.row.sqrlxdh">{{scope.row.sqrlxdh}}</span>
@@ -265,6 +269,7 @@
                   show-sizer placement="top" @on-change="pageChange" @on-page-size-change="pagesizeChange"
                   :page-size.sync="basePage.pagesize" :page-size-opts="pageArray" show-elevator show-total></Page>
         </div>
+        
     </el-card>
 </template>
 
@@ -272,13 +277,15 @@
 	import api from '@/fetch/api.js';
     import {timestampToTime} from '@/libs/common/common';
 	import timer from '@/views/pages/directive/check/timer.vue';
-
+    import modelAjxx from '@/views/pages/provincial/models/modelAjxx.vue';
     import receiveOffice from './receiveOffice.vue';
 
     export default {
-        components: {receiveOffice,timer},
+        components: {receiveOffice,timer,modelAjxx},
         data() {
             return {
+                curAjxxMsg:null,//选择的案件信息....
+                showDialogAjxx:false,//是否显示案件信息列表....
                 zljbVaildSelect:[],//指令级别....
 				objTimeQssx:{
 					event:"timeChange",
@@ -393,18 +400,17 @@
             }
         },
         methods: {
-			ajbhBlur(val){//案件编号失去焦点  搜索指定案件编号信息
-				let _item = this.listOfZAHC.filter((val,i,arr)=>{
-					return val.ajbh == this.formValidate.sabjbh;
-				})
-				if( _item.length == 0 ){
-					this.$message.warning("未查找到此案件编号相关信息!");
-				}else{
-					this.formValidate.ajmc = _item[0].ajmc;
-					this.formValidate.jqajlx = _item[0].ajlbMc;
-					this.formValidate.bz = _item[0].jyaq;
-				}
-			},
+            siginAjxxMsg(){//填入选择的案件信息
+                let _item = this.curAjxxMsg;
+				this.formValidate.ajmc = _item.ajmc;
+				this.formValidate.jqajlx = _item.ajlbMc;
+                this.formValidate.bz = _item.jyaq;
+                this.formValidate.sabjbh = _item.ajbh;
+                this.showDialogAjxx = false;
+            },
+            selectAjxx(curRow){//选择的案件信息行.....
+                this.curAjxxMsg = curRow;
+            },
 			timeChangeQssx(val){
 				this.formValidate.qssx = val;
 				this.setTimeInterval();//更新计时器...
@@ -499,6 +505,7 @@
                 return arr;
             },
             closeModel() {
+                clearInterval(this.intemer);
                 this.visible = false;
                 this.formValidate = {
                     sqlx: '1',
@@ -511,7 +518,7 @@
 					qsdqsj:'',
                     fkdqsj:'',
 					qssx: null,
-					fksx: null,                    
+                    fksx: null         
                 };
                 this.objTimeQssx.hours = null;
                 this.objTimeQssx.minutes = null;
@@ -706,6 +713,18 @@
 </script>
 
 <style lang="less" scoped>
+    .dialogAjxx{
+        /deep/ .el-dialog__body{
+            padding: 0;
+        }
+    }
+    .demo-ruleForm{
+        .ajbh{
+            .el-input{
+                width: 265px;
+            }
+        }
+    }
 	.rowIn{
 		display: flex;
 		justify-content: flex-start;

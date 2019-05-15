@@ -7,11 +7,11 @@
 				<FormItem label="申请人：" :label-width="84">
 					<Input type="text" clearable v-model.trim="basePage.sqrxm" placeholder="请输入申请人"></Input>
 				</FormItem>
-				<FormItem label="申请日期：" :label-width="84">
-				    <DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请日期" style="width: 200px" @on-change="handleDate"></DatePicker>
+				<FormItem label="申请时间：" :label-width="84">
+				    <DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 200px" @on-change="handleDate"></DatePicker>
 			    </FormItem>
 				<FormItem label="当前状态：" :label-width="84" class="ztInput">
-					<Select v-model.trim="basePage.zt">
+					<Select v-model.trim="basePage.zt"  clearable @on-change="dqztChange">
 						<Option v-for="item in typeList" :value="item.code" :key="item.code">{{item.title}}</Option>
 					</Select>
 				</FormItem>
@@ -111,9 +111,6 @@
 					}]
 				},
 				typeList:[{
-					code: 'e',
-					title: '全部'
-				},{
 					code:'5',
 					title:'待总结'
 				},{
@@ -143,6 +140,9 @@
 			})
 		},
 		methods: {
+			dqztChange(val){
+				val ? null : this.basePage.zt = 'assess';
+			},			
 			render() {
 				api.api('post', api.configUrl + '/hczz/za/querySqxxList', this.basePage).then(res => {
 					this.loading = false;
@@ -174,7 +174,6 @@
                 this.render();
 			},
 			handleRow(val, type) {
-				console.log(val)
 				if(type == 'edit') {
 					this.$router.push({
 						path: '/ueditor',

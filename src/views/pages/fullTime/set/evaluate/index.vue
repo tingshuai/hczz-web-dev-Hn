@@ -7,11 +7,11 @@
 				<FormItem label="申请人：" :label-width="84">
 					<Input type="text" clearable v-model.trim="basePage.sqr" placeholder="请输入申请人"></Input>
 				</FormItem>
-				<FormItem label="申请日期：" :label-width="84">
-					<DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请日期" style="width: 200px" @on-change="handleDate"></DatePicker>
+				<FormItem label="申请时间：" :label-width="84">
+					<DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 200px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<FormItem label="当前状态：" :label-width="84">
-					<Select v-model.trim="basePage.zt" filterable>
+					<Select v-model.trim="basePage.zt" filterable  clearable @on-change="dqztChange">
 						<Option v-for="item in typeList" :value="item.code" :key="item.code">{{item.title}}</Option>
 					</Select>
 				</FormItem>
@@ -100,9 +100,6 @@
 				height: 0,
 				title: '',
 				typeList: [{
-					code:'e',
-					title:'全部'
-				},{
 					code:'4',
 					title:'待评价'
 				},{
@@ -158,6 +155,9 @@
 		},
 		
 		methods: {
+			dqztChange(val){
+				val ? null : this.basePage.zt = 'e';
+			},
 			render() {
 				api.api('post', api.configUrl + '/hczz/zhb/queryList', this.basePage).then(res => {
 					this.loading = false;

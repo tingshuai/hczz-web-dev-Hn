@@ -8,11 +8,11 @@
 				<FormItem label="申请人：" :label-width="84">
 					<Input type="text" clearable v-model.trim="basePage.sqrxm" placeholder="请输入申请人"></Input>
 				</FormItem>
-				<FormItem label="申请日期：" :label-width="84">
-				    <DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请日期" style="width: 200px" @on-change="handleDate"></DatePicker>
+				<FormItem label="申请时间：" :label-width="84">
+				    <DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 200px" @on-change="handleDate"></DatePicker>
 			    </FormItem>
 				<FormItem label="当前状态：" :label-width="84" class="ztInput">
-					<Select v-model.trim="basePage.sxzt">
+					<Select v-model.trim="basePage.sxzt" clearable>
 						<Option v-for="item in typeList" :value="item.code" :key="item.code">{{item.title}}</Option>
 					</Select>
 				</FormItem>
@@ -43,14 +43,14 @@
 		data() {
 			return {
 				typeList:[{
+					code:'null',
+					title:'未补录'
+				},{
 					code:'0',
 					title:'补录中'
 				},{
 					code:'1',
 					title:'已补录'
-				},{
-					code:'null',
-					title:'未补录'
 				}],
 				formDynamic: {
 					

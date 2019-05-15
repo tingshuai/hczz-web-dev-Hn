@@ -49,16 +49,21 @@
 						<span :title="scope.row.ajmc">{{scope.row.ajmc}}</span>
 					</template>
 				</el-table-column>
-				<el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
+				<!-- <el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
 						<span :title="scope.row.jyrwnr" class="text-overflow">{{scope.row.jyrwnr}}</span>
 					</template>
-				</el-table-column>
+				</el-table-column> -->
 				<el-table-column label="申请时间" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
 						<span class="span-dqzt">{{scope.row.sqrq|timestampToTime}}</span>
 					</template>
 				</el-table-column>
+				<el-table-column label="签收时间" align="center" :show-overflow-tooltip="true">
+					<template slot-scope="scope">
+						<span class="span-dqzt">{{scope.row.qssj|timestampToTime}}</span>
+					</template>
+				</el-table-column>				
 				<el-table-column label="状态" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
             			<span class="span-dqzt" :title="scope.row.zt">{{scope.row.zt|fkFilter}}</span>

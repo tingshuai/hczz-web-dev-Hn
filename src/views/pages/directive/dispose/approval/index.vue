@@ -9,7 +9,7 @@
 					<Input type="text" v-model="basePage.startUserName" placeholder="请输入下发人" style="width:180px"  clearable></Input>
 				</FormItem>
 				<FormItem label="下发时间：">
-					<DatePicker type="daterange"   placement="bottom-end" placeholder="请输入下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+					<DatePicker type="daterange"   placement="bottom-end" placeholder="请选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<FormItem label="状态：">
 					<Select v-model="basePage.zt" style="width:180px">

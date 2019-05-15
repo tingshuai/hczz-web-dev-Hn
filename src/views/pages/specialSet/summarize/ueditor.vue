@@ -10,12 +10,16 @@
 			</div>
 		</div>
 		<!--<div class="fjDiv">
-			<p>附件上传</p>
-			<loadFile @on-change="proceduresFiles" ref="proceduresFiles"></loadFile>
+			<Form ref="request" :label-width="100">
+				<FormItem label="附件上传">
+					<loadFile @on-change="proceduresFiles" ref="proceduresFiles"></loadFile>
+				</FormItem>
+			</Form>
+
 		</div>-->
 		<div class="text-align-right margin-right-20 btn">
 			<Button @click="cancel">取消</Button>
-			<Button type="primary" @click="saveInfo" v-if="zts==5">确定</Button>
+			<Button type="primary" @click="saveInfo">确定</Button>
 		</div>
 	</div>
 </template>
@@ -54,7 +58,7 @@
 			}
 		},
 		mounted() {
-			if(this.zts==6){
+			if(this.type==2){
 				this.getZgzjContent();
 			}
 		},
@@ -62,8 +66,8 @@
 			ids() {
 				return this.$route.query.sqid
 			},
-			zts(){
-				return this.$route.query.zt
+			type(){
+				return this.$route.query.type
 			},
 			id(){
 				return this.$route.query.id
@@ -74,13 +78,15 @@
 				this.proceduresObj = val;
 			},
 			saveInfo() {
-				let content1 = UE.getEditor('ccc').getContentTxt();
+				let urls=this.type==1?'/hczz/hc/zg/insertZgzj':'/hczz/hc/zg/updateZgzj';
+				let content1 = UE.getEditor('ccc').getContent();
 				let obj = {
 					sqid: this.ids,
 					zgnr: content1,
 					id:this.id
 				}
-				api.api('post', api.configUrl + '/hczz/hc/zg/insertZgzj', obj).then(res => {
+				api.api('post', api.configUrl + urls, obj).then(res => {
+					this.$message.success('总结成功')
 					this.$router.back(-1);
 					UE.getEditor('ccc').setContent('')
 				})
@@ -91,10 +97,11 @@
 				}
 				api.api('post', api.configUrl + '/hczz/hc/zg/getZgzj', obj).then(res => {
 					this.zgzj = res;
+					this.content1 = res.zgnr;
 					UE.getEditor('ccc').setContent(res.zgnr)
 				})
 			},
-			cancel(){
+			cancel() {
 				this.$router.back(-1);
 			}
 		}
@@ -131,15 +138,16 @@
 			}
 		}
 		.fjDiv {
-			/*padding: 20px;*/
 			border-bottom: 1px solid #ececec;
-			p {
-				width: 100px;
-				float: left;
-				margin-right: 20px;
-				height: 100%;
-				padding: 8px 20px;
-				border-right: 1px solid #ececec;
+			.ivu-form-item {
+				/*margin-bottom: 0;*/
+				margin:20px 0;
+				.ivu-form-item-label {
+					border-right: 1px solid #ECECEC;
+				}
+				/*.ivu-form-item-content{
+					margin-left: 120px;
+				}*/
 			}
 		}
 		.margin-right-20 {

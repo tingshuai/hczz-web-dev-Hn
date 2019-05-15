@@ -71,6 +71,7 @@
 						</el-form-item>
 					</el-col>
 				</el-row>
+				<br/>
 				<el-row>
 					<el-col :span="24">
 						<el-form-item label="反馈内容：" v-model="formValidate" prop='fknr' class="word-break">

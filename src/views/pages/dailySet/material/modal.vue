@@ -6,7 +6,7 @@
 					<Button type="default" class="cancelBtn" @click="cancelBtn">取消</Button>
 					<Button type="primary" v-if="detail.sxzt==0" class="sureBtn" @click="sure">确定</Button>
 				</div>
-				<div style="height: 500px;overflow: auto;">
+				<div style="height: 500px;">
 					<el-tabs v-model="activeName" @tab-click="handleClick" style="height: 450px;">
 						<el-tab-pane label="流程轨迹" name="handle">
 							<handle :fncHandle="fncHandle" :sxzt="sxzt" :spzt="spzt"></handle>

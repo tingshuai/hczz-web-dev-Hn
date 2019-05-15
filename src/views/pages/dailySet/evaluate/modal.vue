@@ -6,7 +6,7 @@
 					<Button type="default" class="cancelBtn" @click="cancelBtn">取消</Button>
 					<Button type="primary" v-show="!disabled" class="sureBtn" @click="sure">确定</Button>
 				</div>
-				<div  style="height: 500px;overflow: auto;">
+				<div  style="height: 500px;">
 					<el-tabs v-model="activeName"  @tab-click="handleClick" style="height: 450px;">
 						<el-tab-pane label="研判结果" name="result">
 							<result :fncResult="fncResult"></result>
@@ -49,10 +49,10 @@
 				        </Col>
 			        </Row>
 			        <FormItem label="抓获人数" prop="zhrs">
-			            <Input v-model.trim="formDynamic.zhrs" :clearable="clearable"   placeholder="请输入抓获人数" :maxlength="10" :disabled="disabled"></Input>
+			            <Input v-model.trim="formDynamic.zhrs" :clearable="clearable"   placeholder="请输入抓获人数" :maxlength="10" :readonly="disabled"></Input>
 			        </FormItem>
 			        <FormItem label="综合内容评价" prop="zhpjnr">
-			            <Input v-model.trim="formDynamic.zhpjnr" clearable type="textarea" :rows="4" placeholder="请输入综合内容评价" :maxlength="120" :disabled="disabled"></Input>
+			            <Input v-model.trim="formDynamic.zhpjnr" clearable type="textarea" :rows="4" placeholder="请输入综合内容评价" :maxlength="120" :readonly="disabled"></Input>
 			        </FormItem>
 			        </Form>
 				</div>

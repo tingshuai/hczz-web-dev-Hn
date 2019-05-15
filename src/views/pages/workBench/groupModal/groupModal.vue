@@ -8,10 +8,10 @@
                     <leader-modal @addLeader="addLeader" @empowerClick="empowerClick" ref="leader"
                                   :zaid="zaid"></leader-modal>
                 </TabPane>
-                <TabPane label="组员" name="menber">
+                <!-- <TabPane label="组员" name="menber">
                     <menber-modal @addMenber="addMenber" @empowerClick="empowerClick" ref="member"
                                   :zaid="zaid"></menber-modal>
-                </TabPane>
+                </TabPane> -->
             </Tabs>
 
             <div v-if="isSelect">

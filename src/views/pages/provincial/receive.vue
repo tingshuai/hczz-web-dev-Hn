@@ -62,11 +62,11 @@
             <span :title="scope.row.ajmc">{{scope.row.ajmc}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
+        <!-- <el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
           <template slot-scope="scope">
             <span :title="scope.row.jyrwnr" class="sl">{{scope.row.jyrwnr}}</span>
           </template>
-        </el-table-column>
+        </el-table-column> -->
         <!-- <el-table-column label="联系电话" align="center" :show-overflow-tooltip="true">
           <template slot-scope="scope">
             <span :title="scope.row.sqrlxdh">{{scope.row.sqrlxdh}}</span>

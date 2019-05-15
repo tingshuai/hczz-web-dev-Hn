@@ -175,14 +175,14 @@
 						<el-row style="padding-top:10px">
 							<el-col :span="12">
 								<el-form-item label="接收部门：" prop='receiveOfficeArr'>
-									<Button @click="handleReceiveOffice">选择</Button>
+									<Button @click="handleReceiveOffice('jieshou')">选择</Button>
 									<el-tag v-for="(tag,index) in resetObj.receiveOfficeArr" :key="tag.jsdwmc" closable type="info" @close="delectReceiveArr(index)">{{tag.jsdwmc}}</el-tag>
 									<el-input v-model="formValidate.receiveOfficeArr" v-show="false"></el-input>
 								</el-form-item>
 							</el-col>
 							<el-col :span="12">
 								<el-form-item label="抄送部门：">
-									<Button @click="handleCopyOffice">选择</Button>
+									<Button @click="handleCopyOffice()">选择</Button>
 									<el-tag v-for="(tag,index) in resetObj.copyOfficeArr" :key="tag.jsdw" closable type="info" @close="delectCopyArr(index)">{{tag.jsdwmc}}</el-tag>
 								</el-form-item>
 							</el-col>
@@ -199,9 +199,7 @@
 						<el-button type="primary" v-show="!isPj" @click="closeModel" class="cancelBtn" size="small">关闭</el-button> -->
 				</div>
 			</el-dialog>
-			<div v-if="isReceive">
-				<receive-office :show.sync="isReceive" :isCopy="isCopy" @handleOffice="handleOffice"></receive-office>
-			</div>
+			<receive-office ref="receiveOffice" :show.sync="isReceive" :isCopy="isCopy" @handleOffice="handleOffice"></receive-office>
 		</div>
 	</el-card>
 </template>
@@ -250,7 +248,7 @@
 					qssx: null,
 					fksx: null,
 					zljb: null,
-					receiveOfficeArr: null,
+					receiveOfficeArr: [],
 					zlnr: null,
 					qsdqsj:'',
 					fkdqsj:''
@@ -259,7 +257,6 @@
 				isTaskUpload: false,
 				zljbselect: [],
 				zllxselect: [],
-                zljbVaildSelect: [],
 				numbers: 5,
 				resetObj: {
 					attach: [],
@@ -299,6 +296,7 @@
 						trigger: "change"
 					}],
 					receiveOfficeArr: [{
+						type:'array',
 						required: true,
 						message: "请填写接收部门",
 						trigger: "change"
@@ -438,16 +436,17 @@
 					jyrwnr: null,
 					jsdw: null,
 					bz: null,
-					jqajlx: null
+					jqajlx: null,
+					receiveOfficeArr:[]
 				}
 				// if(this.title == "新建请求") {
 				// 	this.$refs.taskUploadSX.clearFiles();
 				// 	this.$refs.taskUploadRW.clearFiles();
 				// }
-				// this.resetObj.procedFileArr = [];
+				this.resetObj.copyOfficeArr= [];
 				// this.resetObj.TaskFileArr = [];
 				// this.$refs.ruleForm.resetFields();
-				// this.resetObj.receiveOfficeArr=[];
+				this.resetObj.receiveOfficeArr=[];
 			},
 			onRemoveProce(file,fileList){
 				this.resetObj.procedFileArr=this.resetObj.procedFileArr.filter(item=>{
@@ -458,12 +457,9 @@
 			getSelect() {
 				const a = api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/getZlsxpzList",{type:'1'});
 				const b = api.api("post", api.systemUrl + "/dict/findDictTreeByType?dictTypeCode=ZLLX");
-				const c = api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/queryZlsxpzAll");
-				Promise.all([a, b, c]).then(([resA, resB, resC]) => {
-					this.zljbVaildSelect = resA;
-					console.log(this.zljbVaildSelect,'6666666')
+				Promise.all([a, b]).then(([resA, resB]) => {
 					this.zllxselect = resB;
-					this.zljbselect = resC;
+					this.zljbselect = resA;
 				});
 			},
 			handleZllxselect(val) {
@@ -477,11 +473,14 @@
 				this.isReceive = true;
 				this.isCopy = false;
 				this.isShow=true;
+				this.$refs.receiveOffice.selectedDate = JSON.parse(JSON.stringify(this.formValidate.receiveOfficeArr));
+				
 			},
 			handleCopyOffice() {
 				this.isReceive = true;
 				this.isCopy = true;
 				this.isShow=true;
+				this.$refs.receiveOffice.selectedDate = JSON.parse(JSON.stringify(this.resetObj.copyOfficeArr));
 			},
 			//处理接收到的部门对象
 			handleOffice(val) {
@@ -489,8 +488,7 @@
 				this.isCopy ?
 					(this.resetObj.copyOfficeArr = val) :
 					((this.resetObj.receiveOfficeArr = val),
-						(this.formValidate["receiveOfficeArr"] = val.toString()));
-						
+					(this.formValidate["receiveOfficeArr"] = val));
 			},
 			delectReceiveArr(index) {
 				this.formValidate["receiveOfficeArr"] = null;

@@ -10,11 +10,11 @@
 				<FormItem label="申请时间：" :label-width="84">
 					<DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择申请时间" style="width: 200px" @on-change="handleSqDate"></DatePicker>
 				</FormItem>
-				<FormItem label="创建时间：" :label-width="84">
+				<!-- <FormItem label="创建时间：" :label-width="84">
 					<DatePicker type="daterange"   clearable placement="bottom-end" placeholder="请选择创建时间" style="width: 200px" @on-change="handleDate"></DatePicker>
-				</FormItem>
+				</FormItem> -->
 				<FormItem label="当前状态：" :label-width="84" class="ztInput">
-					<Select v-model.trim="basePage.blzt">
+					<Select v-model.trim="basePage.blzt" clearable>
 						<Option v-for="item in typeList" :value="item.code" :key="item.code">{{item.title}}</Option>
 					</Select>
 				</FormItem>
@@ -127,7 +127,7 @@
                                             this.rowObj=params.row;
 										}
 									}
-								}, params.row.blzt==0?'处理 ':'--')
+								}, params.row.blzt==0?'处理 ':'查看')
 							])
 						}
 					}
@@ -153,14 +153,11 @@
 				height: 0,
 				title: '',
 				typeList:[{
-					code:'all',
-					title:'全部'
-				},{
 					code:'0',
-					title:'待补录'
+					title:'待补充'
 				},{
 					code:'1',
-					title:'已补录'
+					title:'已补充'
 				}],
 				id:'',
 				show:false,

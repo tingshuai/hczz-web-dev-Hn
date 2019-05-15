@@ -212,7 +212,7 @@
 .shuttle-select-ct li > div .selected-wrap li i {
   position: absolute;
   right: 5px;
-  top: 8px;
+  top: 14px;
   cursor: pointer;
 }
 .shuttle-select-ct li > div .selected-wrap li svg {

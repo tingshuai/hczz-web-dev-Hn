@@ -1,5 +1,5 @@
 <template>
-  <el-dialog class="modal-ct workBench-group-modal" :title="modelTitle" @close='closeModel' :visible.sync="visible" :modal-append-to-body='false' width="700px">
+  <el-dialog class="modal-ct workBench-group-modal" :title="modelTitle" @close='closeModel' :visible.sync="visible" append-to-body width="700px">
     <ul class="shuttle-select-ct offiece-select-ct">
       <li>
         <span>选择单位</span>

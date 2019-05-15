@@ -52,14 +52,14 @@
 						<span :title="scope.row.fkrxm">{{scope.row.fkrxm}}</span>
 					</template>
 				</el-table-column>
+				<el-table-column label="反馈单位" align="center" :show-overflow-tooltip="true">
+					<template slot-scope="scope">
+						<span :title="scope.row.jsdwmc" class="sl">{{scope.row.jsdwmc}}</span>
+					</template>
+				</el-table-column>
 				<el-table-column label="案事件名称" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
 						<span :title="scope.row.ajmc">{{scope.row.ajmc}}</span>
-					</template>
-				</el-table-column>
-				<el-table-column label="简要任务内容" align="center" :show-overflow-tooltip="true">
-					<template slot-scope="scope">
-						<span :title="scope.row.jyrwnr" class="sl">{{scope.row.jyrwnr}}</span>
 					</template>
 				</el-table-column>
 				<el-table-column label="申请时间" align="center" :show-overflow-tooltip="true">
@@ -67,6 +67,11 @@
 						<span class="span-dqzt">{{scope.row.sqrq| timestampToTime}}</span>
 					</template>
 				</el-table-column>
+				<el-table-column label="反馈时间" align="center" :show-overflow-tooltip="true">
+					<template slot-scope="scope">
+						<span class="span-dqzt">{{scope.row.fksj| timestampToTime}}</span>
+					</template>
+				</el-table-column>				
 				<el-table-column label="状态" align="center" :show-overflow-tooltip="true">
 					<template slot-scope="scope">
 						<span class="span-dqzt" :title="scope.row.zt|pjFilter">{{scope.row.zt|pjFilter}}</span>

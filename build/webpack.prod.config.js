@@ -78,7 +78,7 @@ module.exports = merge(webpackBaseConfig, {
               comments: false
             },
             compress: {
-              warnings: false
+              // warnings: false
             }
           }
         }),

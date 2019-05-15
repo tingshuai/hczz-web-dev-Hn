@@ -40,6 +40,18 @@ export const otherRouter = {
         component: () =>
             import ('@/views/pages/fullTime/start/abc.vue')
     }, {
+        path: 'ueditor',
+        title: '战果总结',
+        name: 'zgzjxq',
+        component: () =>
+            import ('@/views/pages/specialSet/summarize/ueditor.vue')
+    } ,{
+    	path: 'ueditorLook',
+        title: '战果总结查看',
+        name: 'ueditorLookIndex',
+        component: () =>
+            import ('@/views/pages/specialSet/summarize/look.vue')
+    },{
         path: 'zbksh',
         title: '可视化',
         name: 'zbksh',

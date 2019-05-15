@@ -5,7 +5,7 @@
 				<div slot="footer" class="font-size-0">
 					<Button type="default" class="cancelBtn" @click="cancelBtn">关闭</Button>
 				</div>
-				<div  style="height: 500px;overflow: auto;">
+				<div  style="height: 500px;">
 					<el-tabs v-model="activeName"  @tab-click="handleClick" style="height: 450px;">
 						<el-tab-pane label="流程轨迹" name="handle">
 							<handle :fncHandle='fncHandle'></handle>

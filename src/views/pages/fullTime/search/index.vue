@@ -12,8 +12,8 @@
 						<Option v-for="item in typeList" :value="item.code" :key="item.code">{{item.title}}</Option>
 					</Select>
 				</FormItem>
-				<FormItem label="申请日期：" :label-width="84">
-					<DatePicker type="daterange"   placement="bottom-end" placeholder="请选择申请日期" style="width: 200px" @on-change="handleDate"></DatePicker>
+				<FormItem label="申请时间：" :label-width="84">
+					<DatePicker type="daterange"   placement="bottom-end" placeholder="请选择申请时间" style="width: 200px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<Button type="primary" class="searchBtn" @click="search">查询</Button>
 			</Form>

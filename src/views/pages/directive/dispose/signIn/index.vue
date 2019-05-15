@@ -8,7 +8,7 @@
 				<Input type="text" v-model="basePage.xfrxm" placeholder="请输入下发人" style="width:180px" clearable></Input>
 			</FormItem>
 			<FormItem label="下发时间：">
-				<DatePicker type="daterange"   placement="bottom-end" placeholder="请输入下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+				<DatePicker type="daterange"   placement="bottom-end" placeholder="请输选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 			</FormItem>
 			<FormItem label="状态：">
 				<Select v-model.trim="basePage.zt" style="width:180px" clearable fliterable>
@@ -173,7 +173,7 @@
 //				api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/queryZlsxpzAll").then(res => {
 //					this.zljbselect = res;
 //				});
-                api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/getVaildList").then(res => {
+                api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/getZlsxpzList",{"type":'1'}).then(res => {
                     this.zljbVaildSelect = res;
                 });
 			},

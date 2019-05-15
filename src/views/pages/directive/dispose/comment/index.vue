@@ -3,25 +3,25 @@
 		<Form inline :label-width="75" class="search-ct">
 			<div>
 				<FormItem label="指令名称：">
-					<el-input v-model.trim="basePage.zlmc" placeholder="请输入指令名称" clearable size="small" style="width: 180px"></el-input>
+					<Input v-model.trim="basePage.zlmc" placeholder="请输入指令名称" clearable style="width: 180px"></Input>
 				</FormItem>
 				<FormItem label="下发人：">
-					<el-input v-model.trim="basePage.xfrxm" placeholder="请输入下发人" clearable size="small" style="width: 180px"></el-input>
+					<Input v-model.trim="basePage.xfrxm" placeholder="请输入下发人" clearable style="width: 180px"></Input>
 				</FormItem>
 				<FormItem label="下发时间：">
-					<DatePicker type="daterange"     placement="bottom-end" placeholder="请输入下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
+					<DatePicker type="daterange"  placement="bottom-end" placeholder="请输选择下发时间" style="width: 180px" @on-change="handleDate"></DatePicker>
 				</FormItem>
 				<FormItem label="状态：">
-					<el-select v-model="basePage.zt" clearable filterable size="small" placeholder="请选择状态" style="width: 180px">
-						<el-option v-for="item in ztList" :key="item.key" :label="item.value" :value="item.key">
-						</el-option>
-					</el-select>
+					<Select v-model="basePage.zt" clearable filterable placeholder="请选择" style="width: 180px">
+						<Option v-for="item in ztList" :key="item.key" :label="item.value" :value="item.key">
+						</Option>
+					</Select>
 				</FormItem>
 				<FormItem label="指令级别：">
-					<el-select v-model="basePage.zljb" size="small" placeholder="请选择指令级别" style="width: 180px" clearable filterable>
-						<el-option v-for="item in zljbVaildSelect" :key="item.id" :label="item.zljblxmc" :value="item.id">
-						</el-option>
-					</el-select>
+					<Select v-model="basePage.zljb" placeholder="请选择" style="width: 180px" clearable filterable>
+						<Option v-for="item in zljbVaildSelect" :key="item.id" :label="item.zljblxmc" :value="item.id">
+						</Option>
+					</Select>
 				</FormItem>
 
 				<Button type="primary" class="searchBtn" @click="search">查询</Button>
@@ -205,7 +205,7 @@
 				this.isComment = true;
 			},
 			getZlType(){
-                api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/getVaildList").then(res => {
+                api.api("post", api.configUrl + "/hczz/xtpz/zlsxpz/getZlsxpzList",{"type":'1'}).then(res => {
                     this.zljbVaildSelect = res;
                 });
 			}

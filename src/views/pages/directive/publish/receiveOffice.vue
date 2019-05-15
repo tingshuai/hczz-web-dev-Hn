@@ -21,7 +21,8 @@
         <span>已选</span>
         <div>
           <ul class="selected-wrap">
-            <li v-for="(item, index) in selectedDate" :key="index">{{item.jsdwmc}}<i class="el-icon-close" @click="delectArr(index)"></i>
+            <li v-for="(item, index) in selectedDate" :key="index">
+              <span>{{item.jsdwmc}}</span><i class="el-icon-close" @click="delectArr(index)"></i>
             </li>
           </ul>
         </div>
@@ -115,8 +116,7 @@ export default {
       
     },
     handleDeptNode(node) {
-      api
-        .api(
+      api.api(
           "post",
           `${api.systemUrl}/office/findOfficeTreeByType?deptCode=${
             node.deptCode
@@ -146,8 +146,8 @@ export default {
     closeModel() {
       this.$emit("update:show", false);
       this.filterTextDept='';
-      this.selectedDate = [];
-      this.treedata=[];
+      // this.selectedDate = [];
+      // this.treedata=[];
     },
     saveInfo() {
       this.$emit("update:show", false);

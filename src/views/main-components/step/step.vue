@@ -1,7 +1,7 @@
 <template>
 	<div class="step">
 		<ul>
-			<li v-for="(item,index) in list" :key="index" :style="{height:item.remark?'90px' : '70px'}">
+			<li v-for="(item,index) in list" :key="index">
 				<p class="cricle"></p>
 				<p class="line" v-if="index!=list.length-1"></p>
 				<p class="right_content">
@@ -48,11 +48,13 @@
 		height: 446px;
         /*overflow: auto;*/
 		margin-top:20px;
-		margin-right:20px;
+		margin-left:20px;
 		ul{
-			margin-left: 20px;
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
 			li{
-				height: 90px;
+				height: fit-content;
 				position: relative;
 				.cricle {
 					width: 13px;
@@ -94,7 +96,11 @@
 					position:relative;
 					top:-17px;
 					left:20px;
-				    color: rgb(170,170,170);
+					color: rgb(170,170,170);
+					white-space: pre-wrap;
+					width: 100%;
+					word-break: break-word;
+					height: fit-content;					
 				}
 			}
 		}
